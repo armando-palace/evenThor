@@ -9,5 +9,19 @@
     <h1>Hola Administrador {{ user.username }}</h1>
     <a href="{% url 'sign_out' %}">Cerrar sesión</a>
     {% endblock content %}
+<h1>Eventos</h1>
+  {% if events %}
+    <ul>
+      {% for event in events %}
+        <li>
+          <a href="{% url 'meeting:show_event' event.id %}">
+            {{ event.name }}
+          </a>
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>No hay eventos aún.</p>
+  {% endif %}
 </body>
 </html>

@@ -5,6 +5,12 @@
   <meta charset="utf-8">
 </head>
 <body>
+    {% if user.is_authenticated %}
+    <h1>Hola {{ user.username }}</h1>
+    <a href="{% url 'sign_out' %}">Cerrar sesión</a>
+    {% else %}
+    <a href="{% url 'sign_in' %}">Iniciar sesión</a>
+    {% endif %}
   <h1>Eventos</h1>
   {% if events %}
     <ul>
