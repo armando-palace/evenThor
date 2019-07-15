@@ -1,5 +1,4 @@
-from django.shortcuts import render
-
+from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse
 from meeting.models import Event, Presentation, Speaker, Assistant
 
@@ -18,7 +17,14 @@ from django.contrib.auth import authenticate, login
 
 
 def index(request):
-  return render (request, template_name = 'index.html')
+  events = Event.objects.all()
+  context = { 'events': events }
+  return render(request, 'meeting/index.html', context)
+
+def show_event(request, event_id):
+  event = get_object_or_404(Event, pk=event_id)
+  return render(request, 'meeting/show_event.html', { 'event': event })
+  #return render (request, template_name = 'index.html')
 
 class SignInView(LoginView):
   template_name = 'login.html'
@@ -52,4 +58,3 @@ def home_agent(request):
 
 class SignOutView(LogoutView):
   pass
-
