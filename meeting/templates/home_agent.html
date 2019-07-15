@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}agent{% endblock %}</title>
+</head>
+<body>
+    {% block content %}
+    <h1>Hola Agente {{ user.username }}</h1>
+    <a href="{% url 'sign_out' %}">Cerrar sesión</a>
+    {% endblock content %}
+</body>
+</html>
