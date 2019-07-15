@@ -1,0 +1,7 @@
+{% if error_message %}<p><b>{{ error_message }}</b></p>{% endif %}
+
+<form action="{% url 'meeting:event_create' %}" method="post">
+  {% csrf_token %}
+  <input type="text" name="event">
+  <input type="submit" value="Create">
+</form>
